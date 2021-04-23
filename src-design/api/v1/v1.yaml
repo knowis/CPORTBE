@@ -1,0 +1,19 @@
+schemaVersion: /v2/namespace.schema.json
+type: api
+creationTs: '1618391153457'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+ibmApiConnectIntegration: false
+ibmBpmIntegration: false
+label: User Messages Service API Version 1
+supportedSpec: openApi3.0
+host: v1
+apiTitle: Portal UI API
+apiDescription: |
+  This API serves for realizing the user journey within the customer portal
+documentation:
+  fileLink: /api/v1/v1.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1618391153457'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

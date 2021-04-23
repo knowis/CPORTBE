@@ -1,0 +1,26 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1618393473709'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Triggers all operations to delete all (test)data
+type: DELETE
+tags:
+  - testdata
+parameters: []
+pathLink: /api/v1/path/#testdata
+responses:
+  - httpStatusCode: '204'
+    response:
+      description: Test data deleted
+      content: []
+  - httpStatusCode: '400'
+    response:
+      description: Bad Request
+      content: []
+documentation:
+  fileLink: /api/v1/operation/deleteTestdata.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1618393473737'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

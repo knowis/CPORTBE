@@ -1,0 +1,18 @@
+schemaVersion: /v2/namespace.schema.json
+type: api
+creationTs: '1619184152402'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: Interest Rate Calculator API
+ibmApiConnectIntegration: false
+ibmBpmIntegration: false
+label: Interest Rate API
+supportedSpec: openApi3.0
+host: rate
+apiTitle: Interest Rate Calculator API
+documentation:
+  fileLink: /api/rateIn/rateIn.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1619184152402'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

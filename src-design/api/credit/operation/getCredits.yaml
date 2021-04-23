@@ -1,0 +1,26 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1619182460703'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Retrieves all credits of a user
+type: GET
+tags:
+  - credits
+parameters:
+  - /api/credit/parameter/User
+pathLink: /api/credit/path/#credits
+responses:
+  - httpStatusCode: '200'
+    response:
+      description: |
+        A list with all the active credits
+      content:
+        - contentType: application/json
+          schemaLink: /api/credit/schema/Credits
+documentation:
+  fileLink: /api/credit/operation/getCredits.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1619182460729'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

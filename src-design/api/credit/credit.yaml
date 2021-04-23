@@ -1,0 +1,19 @@
+schemaVersion: /v2/namespace.schema.json
+type: api
+creationTs: '1619181627117'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+ibmApiConnectIntegration: false
+ibmBpmIntegration: false
+label: Credit API v1
+supportedSpec: openApi3.0
+host: credit
+apiTitle: Credit API
+apiDescription: |
+  Retrieves all credits of a user
+documentation:
+  fileLink: /api/credit/credit.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1619181627118'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

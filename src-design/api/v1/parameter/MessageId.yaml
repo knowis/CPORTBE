@@ -1,0 +1,11 @@
+schemaVersion: /v2/apiParameter.schema.json
+comments: []
+creationTs: '1618394167034'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+name: id
+location: path
+required: true
+schema:
+  type: string
+  enum: []

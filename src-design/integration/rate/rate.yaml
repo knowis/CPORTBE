@@ -1,0 +1,13 @@
+schemaVersion: /v2/namespace.schema.json
+type: integration
+creationTs: '1618491617505'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: Interest Rate Calculator Service
+label: Interest Rate Service
+documentation:
+  fileLink: /integration/rate/rate.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1618491617506'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

@@ -1,0 +1,10 @@
+schemaVersion: /v1/apiResponse.schema.json
+comments: []
+creationTs: '1618394273099'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: |
+  The stored message
+content:
+  - contentType: application/json
+    schemaLink: /api/v1/schema/Message

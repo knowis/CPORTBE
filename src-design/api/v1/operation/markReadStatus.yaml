@@ -1,0 +1,26 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1618394742462'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Marks read status
+type: PUT
+tags:
+  - message
+parameters:
+  - /api/v1/parameter/MessageId
+  - /api/v1/parameter/User
+requestBody: /api/v1/requestBody/MarkReadStatusRequestBody
+pathLink: '/api/v1/path/#messages#{user}#{id}'
+responses:
+  - httpStatusCode: '201'
+    response:
+      description: |
+        Read status of the message is marked
+      content: []
+documentation:
+  fileLink: /api/v1/operation/markReadStatus.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1618394742490'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

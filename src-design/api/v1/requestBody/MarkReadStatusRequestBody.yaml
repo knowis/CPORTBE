@@ -1,0 +1,11 @@
+schemaVersion: /v1/apiRequestBody.schema.json
+comments: []
+creationTs: '1618394205080'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: |
+  Request body for changing the read status of a message
+required: true
+content:
+  - contentType: application/json
+    schemaLink: /api/v1/schema/ReadStatus

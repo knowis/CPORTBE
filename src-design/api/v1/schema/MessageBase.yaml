@@ -1,0 +1,21 @@
+schemaVersion: /v1/apiSchema.schema.json
+comments: []
+creationTs: '1618391825740'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: |
+  The base schema definition of a message
+type: object
+title: Message Base
+allOfLinks: []
+properties:
+  - name: sender
+    required: false
+    schema:
+      type: string
+      enum: []
+  - name: text
+    required: true
+    schema:
+      type: string
+      enum: []

@@ -1,0 +1,29 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1619183890579'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Triggers the process to converse the credit
+type: DELETE
+tags:
+  - credits
+parameters:
+  - name: id
+    location: path
+    required: true
+    schema:
+      type: string
+      enum: []
+pathLink: '/api/credit/path/#credits#{id}'
+responses:
+  - httpStatusCode: '204'
+    response:
+      description: |
+        the process for a conversion of this credit has been triggered
+      content: []
+documentation:
+  fileLink: /api/credit/operation/deleteCredit.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1619183890616'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

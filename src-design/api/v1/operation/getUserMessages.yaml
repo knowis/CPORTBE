@@ -1,0 +1,21 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1618394434223'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Gets all messages for a user
+type: GET
+tags:
+  - User Messages
+parameters:
+  - /api/v1/parameter/User
+pathLink: '/api/v1/path/#messages#{user}'
+responses:
+  - httpStatusCode: '200'
+    response: /api/v1/response/MessagesResponse
+documentation:
+  fileLink: /api/v1/operation/getUserMessages.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1618394434255'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

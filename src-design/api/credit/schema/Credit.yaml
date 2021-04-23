@@ -1,0 +1,28 @@
+schemaVersion: /v1/apiSchema.schema.json
+comments: []
+creationTs: '1619181822065'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: |
+  object structure to represent a credit
+type: object
+title: Credit
+allOfLinks:
+  - /api/credit/schema/CreditApplication
+  - /api/credit/schema/RateResponse
+properties:
+  - name: end
+    required: false
+    schema:
+      type: string
+      enum: []
+  - name: id
+    required: false
+    schema:
+      type: string
+      enum: []
+  - name: name
+    required: true
+    schema:
+      type: string
+      enum: []

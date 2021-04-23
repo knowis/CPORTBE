@@ -1,0 +1,28 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1619184296952'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Retrieve the interest rate
+type: GET
+tags:
+  - rates
+parameters:
+  - /api/rateIn/parameter/Duration
+  - /api/rateIn/parameter/Amount
+pathLink: '/api/rateIn/path/#rates#{duration}'
+responses:
+  - httpStatusCode: '200'
+    response:
+      description: >
+        A response object containing the interest rate (nominal and effective)
+        and if amount was given in the request also the monthly rate.
+      content:
+        - contentType: application/json
+          schemaLink: /api/rateIn/schema/RateResponse
+documentation:
+  fileLink: /api/rateIn/operation/getRate.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1619184296988'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

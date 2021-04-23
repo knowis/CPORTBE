@@ -1,0 +1,23 @@
+schemaVersion: /v1/apiSchema.schema.json
+comments: []
+creationTs: '1619185783330'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+type: object
+allOfLinks: []
+properties:
+  - name: effectiveInterestRate
+    required: true
+    schema:
+      type: number
+      enum: []
+  - name: monthlyRate
+    required: false
+    schema:
+      type: number
+      enum: []
+  - name: nominalInterestRate
+    required: true
+    schema:
+      type: number
+      enum: []

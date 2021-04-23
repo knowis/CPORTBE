@@ -1,0 +1,35 @@
+schemaVersion: /v1/apiSchema.schema.json
+comments: []
+creationTs: '1619181850432'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+description: |
+  object structure to apply for a new credit
+type: object
+allOfLinks: []
+properties:
+  - name: amount
+    required: true
+    schema:
+      type: integer
+      enum: []
+  - name: currency
+    required: true
+    schema:
+      type: string
+      enum: []
+  - name: duration
+    required: true
+    schema:
+      type: integer
+      enum: []
+  - name: purpose
+    required: false
+    schema:
+      type: string
+      enum: []
+  - name: user
+    required: false
+    schema:
+      type: string
+      enum: []

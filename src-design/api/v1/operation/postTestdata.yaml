@@ -1,0 +1,23 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1618392944170'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+summary: Triggers all necessary operations to insert testdata
+type: POST
+tags:
+  - testdata
+parameters: []
+pathLink: /api/v1/path/#testdata
+responses:
+  - httpStatusCode: '200'
+    response:
+      description: |
+        The testdata was created successfully
+      content: []
+documentation:
+  fileLink: /api/v1/operation/postTestdata.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1618392944202'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

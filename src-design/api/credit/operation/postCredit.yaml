@@ -1,0 +1,27 @@
+schemaVersion: /v3/apiOperation.schema.json
+comments: []
+creationTs: '1619181679022'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+type: POST
+tags:
+  - credits
+parameters: []
+requestBody:
+  required: true
+  content:
+    - contentType: application/json
+      schemaLink: /api/credit/schema/CreditApplicationRequest
+pathLink: /api/credit/path/#credits
+responses:
+  - httpStatusCode: '201'
+    response:
+      description: |
+        Indication that the application was sent successfully
+      content: []
+documentation:
+  fileLink: /api/credit/operation/postCredit.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1619181679061'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2

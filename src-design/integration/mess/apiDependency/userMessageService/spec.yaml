@@ -1,0 +1,210 @@
+openapi: 3.0.1
+info:
+  title: User Messages Service API Version 1
+  description: User Messages Service API
+  version: 1.0.0
+servers:
+  - url: /CPORTME/api/v1
+paths:
+  /messages:
+    get:
+      tags:
+        - All Messages
+      summary: Gets all messages
+      operationId: getAllMessages
+      responses:
+        '200':
+          description: All messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+    delete:
+      tags:
+        - All Messages
+      summary: Deletes all messages
+      operationId: deleteAllMessages
+      responses:
+        '204':
+          description: All messages have been deleted successfully
+  '/messages/{user}':
+    get:
+      tags:
+        - User Messages
+      summary: Gets all messages for a user
+      operationId: getUserMessages
+      parameters:
+        - $ref: '#/components/parameters/User'
+      responses:
+        '200':
+          description: The messages that are to be shown to the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+    post:
+      tags:
+        - User Messages
+      summary: Adds a message for the user
+      operationId: addUserMessage
+      parameters:
+        - $ref: '#/components/parameters/User'
+      requestBody:
+        $ref: '#/components/requestBodies/StoreMessageRequestBody'
+      responses:
+        '201':
+          description: The message was created successfully
+    delete:
+      tags:
+        - User Messages
+      summary: Deletes all messages from the user
+      operationId: deleteUserMessages
+      parameters:
+        - $ref: '#/components/parameters/User'
+      responses:
+        '204':
+          description: All messages for the user have been deleted successfully
+  '/messages/{user}/{id}':
+    get:
+      tags:
+        - Message
+      summary: Gets the user message
+      operationId: getUserMessage
+      parameters:
+        - $ref: '#/components/parameters/User'
+        - $ref: '#/components/parameters/MessageId'
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Message not found
+    put:
+      tags:
+        - Message
+      summary: Marks read status
+      operationId: markReadStatus
+      parameters:
+        - $ref: '#/components/parameters/User'
+        - $ref: '#/components/parameters/MessageId'
+      requestBody:
+        $ref: '#/components/requestBodies/MarkReadStatusRequestBody'
+      responses:
+        '201':
+          description: Read status of the message is marked
+    delete:
+      tags:
+        - Message
+      summary: Deletes a message
+      operationId: deleteUserMessage
+      parameters:
+        - $ref: '#/components/parameters/User'
+        - $ref: '#/components/parameters/MessageId'
+      responses:
+        '204':
+          description: The message was deleted successfully
+        '400':
+          description: Bad Request
+        '404':
+          description: Message not found
+components:
+  schemas:
+    Message:
+      type: object
+      required:
+        - id
+        - read
+        - text
+        - user
+      properties:
+        createdBy:
+          title: Created by
+          type: string
+          description: The message was created by
+        createdOn:
+          title: createdOn
+          type: string
+          description: The message was created on
+        id:
+          type: string
+        read:
+          title: Read
+          type: boolean
+          description: Read status of a message
+        sender:
+          title: Sender
+          type: string
+          description: The sender of the message
+        text:
+          title: Text
+          type: string
+          description: Text of the message
+        user:
+          title: User
+          type: string
+          description: The message is for the user
+    Messages:
+      type: array
+      items:
+        $ref: '#/components/schemas/Message'
+    MessageBase:
+      type: object
+      title: Message Base
+      description: The base schema definition of a message
+      required:
+        - text
+      properties:
+        sender:
+          title: Sender
+          type: string
+          description: The sender of the message
+        text:
+          title: Text
+          type: string
+          description: Text of the message
+    ReadStatus:
+      type: object
+      title: Read Status
+      required:
+        - read
+      properties:
+        read:
+          title: read
+          type: boolean
+          description: Read status of a message
+  responses:
+    MessageResponse:
+      description: The stored message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+  parameters:
+    User:
+      name: user
+      in: path
+      required: true
+      schema:
+        type: string
+    MessageId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    StoreMessageRequestBody:
+      description: Request body for storing (add or change) a message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MessageBase'
+      required: true
+    MarkReadStatusRequestBody:
+      description: Request body for changing the read status of a message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReadStatus'
+  securitySchemes: {}
