@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { serviceRunners, TestEnvironment } from 'solution-framework';
 
-
 describe('mess:GetUserMessagesService', () => {
 
   const testEnvironment = new TestEnvironment();
@@ -16,13 +15,16 @@ describe('mess:GetUserMessagesService', () => {
     // This is an optional block.
 
     // Recommended: remove all instances that were created
-    // await testEnvironment.cleanup();
+    await testEnvironment.cleanup();
   });
 
   it('works', async () => {
-    // const runner = new serviceRunners.mess_GetUserMessagesServiceRunner();
-    // await runner.run();
-    console.warn('No tests available');
+    const runner = new serviceRunners.mess_GetUserMessagesServiceRunner();
+    runner.input = testEnvironment.factory.entity.mess.GetUserMessagesService_Input();
+    runner.input.user = 'testUser';
+
+    const output = await runner.run();
+    console.warn(output);
     expect(true).to.equal(true);
   });
 
