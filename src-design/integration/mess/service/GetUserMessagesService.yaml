@@ -1,0 +1,19 @@
+schemaVersion: /v2/service.schema.json
+comments: []
+creationTs: '1620981428261'
+creator: Ronny Krammer
+creatorId: d36f56a3-2471-4d3e-9a7b-c6d13324c341
+label: GetUserMessagesService
+type: integrationRest
+inputEntityLink: /integration/mess/entity/GetUserMessagesService_Input
+outputEntityLink: /integration/mess/entity/Message
+inputIsEntityList: false
+outputIsEntityList: true
+mappedBusinessErrorLinks: []
+mappedBusinessEventLinks: []
+documentation:
+  fileLink: /integration/mess/service/GetUserMessagesService.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1620981428298'
+  creator: Ronny Krammer
+  creatorId: d36f56a3-2471-4d3e-9a7b-c6d13324c341

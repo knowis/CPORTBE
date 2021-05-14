@@ -1,0 +1,22 @@
+schemaVersion: /v3/entity.schema.json
+type: entity
+creationTs: '1620982066256'
+creator: Ronny Krammer
+creatorId: d36f56a3-2471-4d3e-9a7b-c6d13324c341
+comments: []
+isAbstract: false
+documentation:
+  fileLink: /integration/mess/entity/GetUserMessagesService_Input.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1620982066284'
+  creator: Ronny Krammer
+  creatorId: d36f56a3-2471-4d3e-9a7b-c6d13324c341
+label: GetUserMessagesService Input
+parentLinks: []
+properties:
+  - mappingType: value
+    isMandatory: true
+    propertyDefinitionLink: /integration/mess/propertyDefinition/user
+    propertyName: user
+constructorProperties: []
+isLocallyManaged: true
