@@ -38,4 +38,8 @@ properties:
     isMandatory: true
     propertyDefinitionLink: /integration/mess/propertyDefinition/createdOn
     propertyName: createdOn
+  - mappingType: value
+    isMandatory: true
+    propertyDefinitionLink: /integration/mess/propertyDefinition/id
+    propertyName: id
 constructorProperties: []
