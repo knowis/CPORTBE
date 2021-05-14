@@ -1,0 +1,12 @@
+schemaVersion: /v2/propertyDefinition.schema.json
+comments: []
+creationTs: '1620991419501'
+creator: Ronny Krammer
+creatorId: d36f56a3-2471-4d3e-9a7b-c6d13324c341
+type: text
+documentation:
+  fileLink: /integration/mess/propertyDefinition/messageId.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1620991419536'
+  creator: Ronny Krammer
+  creatorId: d36f56a3-2471-4d3e-9a7b-c6d13324c341
