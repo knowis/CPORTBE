@@ -4,24 +4,28 @@ creationTs: '1618391694706'
 creator: Namrata Gupta
 creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
 type: object
-allOfLinks: []
+allOfLinks:
+  - /api/v1/schema/MessageBase
+  - /api/v1/schema/ReadStatus
 properties:
   - name: id
     required: true
     schema:
       type: string
       enum: []
-  - name: sender
+  - name: createdOn
     required: false
     schema:
       type: string
+      title: createdOn
       enum: []
-  - name: text
+  - name: createdBy
     required: false
     schema:
-      type: array
-      itemsLink: /api/v1/schema/MessageContent
-  - name: timestamp
+      type: string
+      title: createdBy
+      enum: []
+  - name: user
     required: false
     schema:
       type: string
