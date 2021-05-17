@@ -1,11 +1,12 @@
 import { operations } from 'solution-framework';
 
-
 export default class extends operations.v1_deleteTestdata {
 
   public async execute(): Promise<void> {
     const log = this.util.log;
     log.debug('v1_deleteTestdata.execute()');
+    // nothing to do yet
+    this.response.status = 204
   }
 
   /**

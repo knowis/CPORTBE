@@ -18,10 +18,9 @@ describe('deleteTestdata', () => {
     // await testEnvironment.cleanup();
   });
   it('works', async () => {
-    // const runner = new operationRunners.v1_deleteTestdataRunner();
-    // await runner.run();
-    console.warn('No tests available');
-    expect(true).to.equal(true);
+    const runner = new operationRunners.v1_deleteTestdataRunner();
+    await runner.run();
+    expect(runner.response.status).to.equal(204);
   });
 
 });

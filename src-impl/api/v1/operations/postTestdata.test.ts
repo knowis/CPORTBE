@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { operationRunners, TestEnvironment } from 'solution-framework';
 
-
 describe('postTestdata', () => {
   const testEnvironment = new TestEnvironment();
   before(async () => {
@@ -18,10 +17,9 @@ describe('postTestdata', () => {
     // await testEnvironment.cleanup();
   });
   it('works', async () => {
-    // const runner = new operationRunners.v1_postTestdataRunner();
-    // await runner.run();
-    console.warn('No tests available');
-    expect(true).to.equal(true);
+    const runner = new operationRunners.v1_postTestdataRunner();
+    await runner.run();
+    expect(runner.response.status).to.equal(200);
   });
 
 });

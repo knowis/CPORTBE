@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { operationRunners, TestEnvironment } from 'solution-framework';
-
+import { credit_getCreditsRequest } from 'solution-framework/dist/sdk/v1/namespace/operationRequest/credit_getCreditsRequest';
 
 describe('getCredits', () => {
   const testEnvironment = new TestEnvironment();
@@ -18,10 +18,11 @@ describe('getCredits', () => {
     // await testEnvironment.cleanup();
   });
   it('works', async () => {
-    // const runner = new operationRunners.credit_getCreditsRunner();
-    // await runner.run();
-    console.warn('No tests available');
-    expect(true).to.equal(true);
+    const runner = new operationRunners.credit_getCreditsRunner();
+    runner.request = new credit_getCreditsRequest();
+    runner.request.query.user = 'jbo';
+    await runner.run();
+    expect(runner.response.status).to.equal(200);
   });
 
 });
