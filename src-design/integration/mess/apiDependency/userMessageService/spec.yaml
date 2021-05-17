@@ -1,32 +1,13 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
   title: User Messages Service API Version 1
   description: User Messages Service API
   version: 1.0.0
 servers:
   - url: /CPORTME/api/v1
+security:
+  - oauth2schema: []
 paths:
-  /messages:
-    get:
-      tags:
-        - All Messages
-      summary: Gets all messages
-      operationId: getAllMessages
-      responses:
-        '200':
-          description: All messages
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Messages'
-    delete:
-      tags:
-        - All Messages
-      summary: Deletes all messages
-      operationId: deleteAllMessages
-      responses:
-        '204':
-          description: All messages have been deleted successfully
   '/messages/{user}':
     get:
       tags:
@@ -34,7 +15,63 @@ paths:
       summary: Gets all messages for a user
       operationId: getUserMessages
       parameters:
-        - $ref: '#/components/parameters/User'
+        - name: user
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         '200':
           description: The messages that are to be shown to the user
@@ -48,22 +85,260 @@ paths:
       summary: Adds a message for the user
       operationId: addUserMessage
       parameters:
-        - $ref: '#/components/parameters/User'
+        - name: user
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         $ref: '#/components/requestBodies/StoreMessageRequestBody'
       responses:
         '201':
           description: The message was created successfully
+          content: {}
     delete:
       tags:
         - User Messages
       summary: Deletes all messages from the user
       operationId: deleteUserMessages
       parameters:
-        - $ref: '#/components/parameters/User'
+        - name: user
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         '204':
           description: All messages for the user have been deleted successfully
+          content: {}
+  /messages:
+    get:
+      tags:
+        - All Messages
+      summary: Gets all messages
+      operationId: getAllMessages
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: All messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+    delete:
+      tags:
+        - All Messages
+      summary: Deletes all messages
+      operationId: deleteAllMessages
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '204':
+          description: All messages have been deleted successfully
+          content: {}
   '/messages/{user}/{id}':
     get:
       tags:
@@ -71,129 +346,389 @@ paths:
       summary: Gets the user message
       operationId: getUserMessage
       parameters:
-        - $ref: '#/components/parameters/User'
-        - $ref: '#/components/parameters/MessageId'
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: user
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         '200':
-          $ref: '#/components/responses/MessageResponse'
+          description: The stored message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
         '400':
           description: Bad Request
+          content: {}
         '404':
           description: Message not found
+          content: {}
     put:
       tags:
         - Message
       summary: Marks read status
       operationId: markReadStatus
       parameters:
-        - $ref: '#/components/parameters/User'
-        - $ref: '#/components/parameters/MessageId'
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: user
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         $ref: '#/components/requestBodies/MarkReadStatusRequestBody'
       responses:
         '201':
           description: Read status of the message is marked
+          content: {}
     delete:
       tags:
         - Message
       summary: Deletes a message
       operationId: deleteUserMessage
       parameters:
-        - $ref: '#/components/parameters/User'
-        - $ref: '#/components/parameters/MessageId'
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: user
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: >-
+            List of acceptable human languages for response. According to `RFC
+            7231`
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-ParentSpanId
+          in: header
+          description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-SpanId
+          in: header
+          description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-TraceId
+          in: header
+          description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-B3-Sampled
+          in: header
+          description: Zipkin Sampled (e.g. `0`)
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: X-DEBUG-SESSION
+          in: header
+          description: X-DEBUG-SESSION
+          required: false
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         '204':
           description: The message was deleted successfully
+          content: {}
         '400':
           description: Bad Request
+          content: {}
         '404':
           description: Message not found
+          content: {}
 components:
   schemas:
     Message:
+      title: Message
       type: object
+      description: The schema definition of a message
+      allOf:
+        - $ref: '#/components/schemas/MessageBase'
+        - $ref: '#/components/schemas/ReadStatus'
+        - required:
+            - id
+            - user
+          type: object
+          properties:
+            id:
+              type: string
+            user:
+              type: string
+              description: The message is for the user
+            createdOn:
+              title: createdOn
+              type: string
+              description: The message was created on
+            createdBy:
+              title: Created by
+              type: string
+              description: The message was created by
+    MessageBase:
+      title: Message Base
       required:
-        - id
-        - read
         - text
-        - user
+      type: object
       properties:
-        createdBy:
-          title: Created by
+        sender:
+          title: Sender
           type: string
-          description: The message was created by
-        createdOn:
-          title: createdOn
+          description: The sender of the message
+        text:
+          title: Text
           type: string
-          description: The message was created on
-        id:
-          type: string
+          description: Text of the message
+      description: The base schema definition of a message
+    Messages:
+      title: Messages
+      type: array
+      description: The schema definition for an array of messages
+      items:
+        $ref: '#/components/schemas/Message'
+    ReadStatus:
+      title: Read Status
+      required:
+        - read
+      type: object
+      properties:
         read:
           title: Read
           type: boolean
           description: Read status of a message
-        sender:
-          title: Sender
-          type: string
-          description: The sender of the message
-        text:
-          title: Text
-          type: string
-          description: Text of the message
-        user:
-          title: User
-          type: string
-          description: The message is for the user
-    Messages:
-      type: array
-      items:
-        $ref: '#/components/schemas/Message'
-    MessageBase:
-      type: object
-      title: Message Base
-      description: The base schema definition of a message
-      required:
-        - text
-      properties:
-        sender:
-          title: Sender
-          type: string
-          description: The sender of the message
-        text:
-          title: Text
-          type: string
-          description: Text of the message
-    ReadStatus:
-      type: object
-      title: Read Status
-      required:
-        - read
-      properties:
-        read:
-          title: read
-          type: boolean
-          description: Read status of a message
   responses:
-    MessageResponse:
+    MessageRespone:
       description: The stored message
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Message'
+    MessagesResponse:
+      description: The messages that are to be shown to the user
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Messages'
   parameters:
-    User:
-      name: user
-      in: path
-      required: true
-      schema:
-        type: string
     MessageId:
       name: id
       in: path
       required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    User:
+      name: user
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    Accept-Language:
+      name: Accept-Language
+      in: header
+      description: List of acceptable human languages for response. According to `RFC 7231`
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    X-B3-ParentSpanId:
+      name: X-B3-ParentSpanId
+      in: header
+      description: Zipkin Parent Span Id (e.g. `6adc7f8b31f35e91`)
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    X-B3-SpanId:
+      name: X-B3-SpanId
+      in: header
+      description: Zipkin Span Id (e.g. `0a7b5cd9c2568f7d`)
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    X-B3-TraceId:
+      name: X-B3-TraceId
+      in: header
+      description: Zipkin Trace Id (e.g. `0a7b5cd9c2568f7d6adc7f8b31f35e91`)
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    X-B3-Sampled:
+      name: X-B3-Sampled
+      in: header
+      description: Zipkin Sampled (e.g. `0`)
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    X-DEBUG-SESSION:
+      name: X-DEBUG-SESSION
+      in: header
+      description: X-DEBUG-SESSION
+      required: false
+      style: simple
+      explode: false
       schema:
         type: string
   requestBodies:
+    MarkReadStatusRequestBody:
+      description: Request body for changing the read status of a message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReadStatus'
+      required: true
     StoreMessageRequestBody:
       description: Request body for storing (add or change) a message
       content:
@@ -201,10 +736,14 @@ components:
           schema:
             $ref: '#/components/schemas/MessageBase'
       required: true
-    MarkReadStatusRequestBody:
-      description: Request body for changing the read status of a message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ReadStatus'
-  securitySchemes: {}
+  securitySchemes:
+    oauth2schema:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: >-
+            https://auth.apps.openshift-03.knowis.cloud/auth/realms/qa-br/protocol/openid-connect/auth
+          scopes: {}
+      x-tokenName: id_token
+x-knowis-solutionAcronym: CPORTME
+x-knowis-apiName: v1
