@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { operationRunners, TestEnvironment } from 'solution-framework';
 
-
 describe('getUserMessages', () => {
   const testEnvironment = new TestEnvironment();
   before(async () => {
@@ -18,10 +17,12 @@ describe('getUserMessages', () => {
     // await testEnvironment.cleanup();
   });
   it('works', async () => {
-    // const runner = new operationRunners.v1_getUserMessagesRunner();
-    // await runner.run();
-    console.warn('No tests available');
-    expect(true).to.equal(true);
+    const runner = new operationRunners.v1_getUserMessagesRunner();
+    await runner.run();
+
+    runner.request.path.user = 'ngu';
+
+    expect(runner.response.status).to.equal(200);
   });
 
 });

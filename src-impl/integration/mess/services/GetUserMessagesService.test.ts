@@ -23,9 +23,20 @@ describe('mess:GetUserMessagesService', () => {
     runner.input = testEnvironment.factory.entity.mess.GetUserMessagesService_Input();
     runner.input.user = 'testUser';
 
-    const output = await runner.run();
-    console.warn(output);
-    expect(true).to.equal(true);
+    await runner.run();
+
+    const messages = runner.output;
+
+    expect(messages).to.have.length.greaterThan(0);
+
+    for(const message of messages) {
+      expect(message).to.have.property('messageId');
+      expect(message).to.have.property('text');
+      expect(message).to.have.property('read');
+      expect(message).to.have.property('sender');
+      expect(message).to.have.property('user');
+      expect(message).to.have.property('createdBy');
+    }
   });
 
 });

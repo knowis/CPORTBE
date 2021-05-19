@@ -13,7 +13,7 @@ export default class extends services.mess_GetUserMessagesService {
 
     const messages: mess_Message[] = [];
 
-    if (status === 200) {
+    if (status === 200 && messagesFromAPI.length) {
       messagesFromAPI.forEach(mes => {
         const message = this.factory.entity.mess.Message();
         message.messageId = mes.id;

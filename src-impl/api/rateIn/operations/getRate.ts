@@ -4,7 +4,7 @@ export default class extends operations.rateIn_getRate {
 
   public async execute(): Promise<void> {
     const log = this.util.log;
-    log.debug('v1_getRate.execute()');
+    log.info('rateIn_getRate.execute()');
 
     const duration = this.request.path.duration;
     const amount = this.request.query.amount;

@@ -6,7 +6,7 @@ export default class extends operations.v1_getUserMessages {
 
   public async execute(): Promise<void> {
     const log = this.util.log;
-    log.debug('v1_getUserMessages.execute()');
+    log.info('v1_getUserMessages.execute()');
 
     const user = this.request.path.user;
     const getUserMessagesServiceInput = this.factory.entity.mess.GetUserMessagesService_Input();
