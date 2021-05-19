@@ -4,7 +4,7 @@ creationTs: '1621429341064'
 creator: Namrata Gupta
 creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
 type: decimal
-decimalPlaces: '3'
+decimalPlaces: '6'
 documentation:
   fileLink: /integration/rate/propertyDefinition/effectiveInterestRate.md
   schemaVersion: /v1/documentation.schema.json
