@@ -1,0 +1,22 @@
+schemaVersion: /v3/entity.schema.json
+type: entity
+creationTs: '1621429433302'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+comments: []
+isAbstract: false
+documentation:
+  fileLink: /integration/rate/entity/InterestRateCalculator_Input.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1621429433331'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+label: interestRateCalculator Input
+parentLinks: []
+properties:
+  - mappingType: value
+    isMandatory: true
+    propertyDefinitionLink: /integration/rate/propertyDefinition/duration
+    propertyName: duration
+constructorProperties: []
+isLocallyManaged: true

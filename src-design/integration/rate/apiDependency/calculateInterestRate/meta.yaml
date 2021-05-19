@@ -1,0 +1,7 @@
+schemaVersion: /v1/apiDependency.schema.json
+comments: []
+creationTs: '1621430102958'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+fileLink: /integration/rate/apiDependency/calculateInterestRate/spec
+localLookup: true

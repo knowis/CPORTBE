@@ -1,0 +1,17 @@
+schemaVersion: /v2/service.schema.json
+comments: []
+creationTs: '1621429404121'
+creator: Namrata Gupta
+creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
+label: interestRateCalculator
+type: integrationRest
+inputEntityLink: /integration/rate/entity/InterestRateCalculator_Input
+outputEntityLink: /integration/rate/entity/InterestRateResponse
+mappedBusinessErrorLinks: []
+mappedBusinessEventLinks: []
+documentation:
+  fileLink: /integration/rate/service/InterestRateCalculator.md
+  schemaVersion: /v1/documentation.schema.json
+  creationTs: '1621429404150'
+  creator: Namrata Gupta
+  creatorId: 9cc2a3c7-4108-4270-84c3-4d45a8c793b2
