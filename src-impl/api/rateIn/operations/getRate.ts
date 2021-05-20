@@ -17,7 +17,7 @@ export default class extends operations.rateIn_getRate {
     const { nominalInterestRate, effectiveInterestRate } = await this.services.rate.InterestRateCalculator(interestRateCalculatorInput);
 
     const monthlyRateCalculatorInput = this.factory.entity.rate.MonthlyRateCalculatorRequest();
-    monthlyRateCalculatorInput.amount = amount.toString();
+    monthlyRateCalculatorInput.amount = amount ? amount.toString() : '0';
     monthlyRateCalculatorInput.duration = duration.toString();
     monthlyRateCalculatorInput.nominalInterestRate = nominalInterestRate.toString();
 
@@ -30,37 +30,6 @@ export default class extends operations.rateIn_getRate {
     rateResponse.effectiveInterestRate = parseFloat(effectiveInterestRate);
 
     this.response.body = rateResponse;
-
-    // const resp = this.factory.schema.rateIn.RateResponse();
-
-    // let nominalInterest;
-    // if(duration <= 12){
-    //   nominalInterest = 0.0102;
-    // } else if(duration <= 24) {
-    //   nominalInterest = 0.0114;
-    // } else if(duration <= 24) {
-    //   nominalInterest = 0.0114;
-    // } else if(duration <= 36) {
-    //   nominalInterest = 0.0136;
-    // } else if(duration <= 48) {
-    //   nominalInterest = 0.0159;
-    // } else if(duration <= 60) {
-    //   nominalInterest = 0.0217;
-    // }
-
-    // const m = 12;
-    // const im = nominalInterest / m;
-    // const effectiveInterest = Math.pow(1 + im, m) - 1;
-
-    // resp.nominalInterestRate = nominalInterest;
-    // resp.effectiveInterestRate = effectiveInterest;
-
-    // if(amount) {
-    //   const n = duration / m;
-    //   const s0 = amount;
-    //   const cmn = Math.pow(1 + im, m * n)
-    //   resp.monthlyRate = s0 * cmn * (im / (cmn - 1))
-    // }
 
     this.response.status = 200;
   }
