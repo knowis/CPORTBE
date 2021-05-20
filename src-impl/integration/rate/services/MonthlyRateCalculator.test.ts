@@ -1,7 +1,9 @@
 import { expect } from 'chai';
-import { operationRunners, TestEnvironment } from 'solution-framework';
+import { serviceRunners, TestEnvironment } from 'solution-framework';
 
-describe('getRate', () => {
+
+describe('rate:MonthlyRateCalculator', () => {
+
   const testEnvironment = new TestEnvironment();
   before(async () => {
     // This block will run automatically before all tests.
@@ -16,16 +18,20 @@ describe('getRate', () => {
     // Recommended: remove all instances that were created
     // await testEnvironment.cleanup();
   });
+
   it('works', async () => {
-    const runner = new operationRunners.rateIn_getRateRunner();
-    runner.request.path.duration = 12;
-    runner.request.query.amount = 10000;
+    const runner = new serviceRunners.rate_MonthlyRateCalculatorRunner();
+    runner.input = testEnvironment.factory.entity.rate.MonthlyRateCalculatorRequest();
+    runner.input.duration = '12';
+    runner.input.amount = '10000'
+    runner.input.nominalInterestRate = '0.01075';
 
     await runner.run();
-    expect(runner.response.status).to.equal(200);
-    expect(runner.response.body.nominalInterestRate).to.equal(0.01085);
-    expect(runner.response.body.monthlyRate).to.equal(838.24);
-    expect(runner.response.body.effectiveInterestRate).to.equal(0.01091);
+
+    // then
+    const monthlyRate = runner.output.monthlyRate;
+    expect(monthlyRate).to.equal('838.24');
+
   });
 
 });

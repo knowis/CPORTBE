@@ -9,38 +9,59 @@ export default class extends operations.rateIn_getRate {
     const duration = this.request.path.duration;
     const amount = this.request.query.amount;
 
-    const resp = this.factory.schema.rateIn.RateResponse();
+    // construct inputs for services
+    const interestRateCalculatorInput = this.factory.entity.rate.InterestRateCalculator_Input();
+    interestRateCalculatorInput.duration = duration.toString();
 
-    let nominalInterest;
-    if(duration <= 12){
-      nominalInterest = 0.0102;
-    } else if(duration <= 24) {
-      nominalInterest = 0.0114;
-    } else if(duration <= 24) {
-      nominalInterest = 0.0114;
-    } else if(duration <= 36) {
-      nominalInterest = 0.0136;
-    } else if(duration <= 48) {
-      nominalInterest = 0.0159;
-    } else if(duration <= 60) {
-      nominalInterest = 0.0217;
-    }
+    // call Integration Service to get the nominal and effective interest rates
+    const { nominalInterestRate, effectiveInterestRate } = await this.services.rate.InterestRateCalculator(interestRateCalculatorInput);
 
-    const m = 12;
-    const im = nominalInterest / m;
-    const effectiveInterest = Math.pow(1 + im, m) - 1;
+    const monthlyRateCalculatorInput = this.factory.entity.rate.MonthlyRateCalculatorRequest();
+    monthlyRateCalculatorInput.amount = amount.toString();
+    monthlyRateCalculatorInput.duration = duration.toString();
+    monthlyRateCalculatorInput.nominalInterestRate = nominalInterestRate.toString();
 
-    resp.nominalInterestRate = nominalInterest;
-    resp.effectiveInterestRate = effectiveInterest;
+    // call Integration Service to get the monthly rate
+    const { monthlyRate } = await this.services.rate.MonthlyRateCalculator(monthlyRateCalculatorInput);
 
-    if(amount) {
-      const n = duration / m;
-      const s0 = amount;
-      const cmn = Math.pow(1 + im, m * n)
-      resp.monthlyRate = s0 * cmn * (im / (cmn - 1))
-    }
+    const rateResponse = this.factory.schema.rateIn.RateResponse();
+    rateResponse.monthlyRate = parseFloat(monthlyRate);
+    rateResponse.nominalInterestRate = parseFloat(nominalInterestRate);
+    rateResponse.effectiveInterestRate = parseFloat(effectiveInterestRate);
 
-    this.response.body = resp;
+    this.response.body = rateResponse;
+
+    // const resp = this.factory.schema.rateIn.RateResponse();
+
+    // let nominalInterest;
+    // if(duration <= 12){
+    //   nominalInterest = 0.0102;
+    // } else if(duration <= 24) {
+    //   nominalInterest = 0.0114;
+    // } else if(duration <= 24) {
+    //   nominalInterest = 0.0114;
+    // } else if(duration <= 36) {
+    //   nominalInterest = 0.0136;
+    // } else if(duration <= 48) {
+    //   nominalInterest = 0.0159;
+    // } else if(duration <= 60) {
+    //   nominalInterest = 0.0217;
+    // }
+
+    // const m = 12;
+    // const im = nominalInterest / m;
+    // const effectiveInterest = Math.pow(1 + im, m) - 1;
+
+    // resp.nominalInterestRate = nominalInterest;
+    // resp.effectiveInterestRate = effectiveInterest;
+
+    // if(amount) {
+    //   const n = duration / m;
+    //   const s0 = amount;
+    //   const cmn = Math.pow(1 + im, m * n)
+    //   resp.monthlyRate = s0 * cmn * (im / (cmn - 1))
+    // }
+
     this.response.status = 200;
   }
 
