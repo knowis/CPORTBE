@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { operationRunners, TestEnvironment } from 'solution-framework';
-import { rateIn_getRateRequest } from 'solution-framework/dist/sdk/v1/namespace/operationRequest/rateIn_getRateRequest';
 
 describe('getRate', () => {
   const testEnvironment = new TestEnvironment();
@@ -19,6 +18,8 @@ describe('getRate', () => {
   });
   it('works', async () => {
     const runner = new operationRunners.rateIn_getRateRunner();
+    runner.request.path.duration = 12;
+    runner.request.query.amount = 10000;
 
     await runner.run();
     expect(runner.response.status).to.equal(200);
