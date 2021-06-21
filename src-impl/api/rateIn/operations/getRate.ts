@@ -6,23 +6,9 @@ export default class extends operations.rateIn_getRate {
     const log = this.util.log;
     log.info('rateIn_getRate.execute()');
 
-    const duration = this.request.path.duration;
-    const amount = this.request.query.amount;
-
-    // construct inputs for services
-    const interestRateCalculatorInput = this.factory.entity.rate.InterestRateCalculator_Input();
-    interestRateCalculatorInput.duration = duration.toString();
-
-    // call Integration Service to get the nominal and effective interest rates
-    const { nominalInterestRate, effectiveInterestRate } = await this.services.rate.InterestRateCalculator(interestRateCalculatorInput);
-
-    const monthlyRateCalculatorInput = this.factory.entity.rate.MonthlyRateCalculatorRequest();
-    monthlyRateCalculatorInput.amount = amount ? amount.toString() : '0';
-    monthlyRateCalculatorInput.duration = duration.toString();
-    monthlyRateCalculatorInput.nominalInterestRate = nominalInterestRate.toString();
-
-    // call Integration Service to get the monthly rate
-    const { monthlyRate } = await this.services.rate.MonthlyRateCalculator(monthlyRateCalculatorInput);
+    const monthlyRate = '838.24';
+    const nominalInterestRate = '0.01085';
+    const effectiveInterestRate = '0.01091';
 
     const rateResponse = this.factory.schema.rateIn.RateResponse();
     rateResponse.monthlyRate = parseFloat(monthlyRate);

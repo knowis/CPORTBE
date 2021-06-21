@@ -1,6 +1,4 @@
 import { operations } from 'solution-framework';
-import { v1_Message } from 'solution-framework/dist/sdk/v1/namespace/schema/v1_Message';
-import { Mapper } from '../../../util/Mapper';
 
 export default class extends operations.v1_getUserMessages {
 
@@ -8,18 +6,20 @@ export default class extends operations.v1_getUserMessages {
     const log = this.util.log;
     log.info('v1_getUserMessages.execute()');
 
-    const user = this.request.path.user;
-    const getUserMessagesServiceInput = this.factory.entity.mess.GetUserMessagesService_Input();
-    getUserMessagesServiceInput.user = user;
+    const schema = this.factory.schema.v1.Message();
+    const messages = [];
 
-    const messages = await this.services.mess.GetUserMessagesService(getUserMessagesServiceInput);
+    schema.id = '123';
+    schema.read = true;
+    schema.sender = 'testSender';
+    schema.text = 'test message';
+    schema.user = 'testUser';
+    schema.createdBy = 'test';
+    schema.createdOn = '2022-02-04';
 
-    const MessageMapper = new Mapper(this.context);
-    const respMessages = this.factory.schema.v1.Messages();
-    messages.forEach((message) => {
-      respMessages.push(MessageMapper.mapEntityToSchema(message) as v1_Message);
-    });
-    this.response.body = respMessages;
+    messages.push(schema);
+
+    this.response.body = messages;
     this.response.status = 200;
 
   }
